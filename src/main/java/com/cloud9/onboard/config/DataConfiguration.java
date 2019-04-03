@@ -3,7 +3,6 @@ package com.cloud9.onboard.config;
 import java.sql.SQLException;
 
 import javax.sql.DataSource;
-
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,11 +17,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import com.cloud9.onboard.repository.data.CustomRepositoryImpl;
-
-
-
 
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.cloud9.onboard.repository.data"}, repositoryBaseClass = CustomRepositoryImpl.class)
@@ -32,7 +27,6 @@ import com.cloud9.onboard.repository.data.CustomRepositoryImpl;
 @PropertySource("classpath:/application.yml")
 public class DataConfiguration {
 	
-
 	   @Value("${spring.datasource.url}")
 	    private String url;
 
@@ -105,7 +99,7 @@ public class DataConfiguration {
 	    }
 	    
 	    @Bean
-		@Qualifier("postgreJdbcTemplate")
+		@Qualifier("mysqlJdbcTemplate")
 		JdbcTemplate jdbcTemplate() throws SQLException {
 
 			JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource());

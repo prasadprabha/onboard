@@ -25,15 +25,15 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
-        if (null != user) {
-	        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-	        for (Role role : user.getRoles()) {
-	            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+	        if (null != user) {
+		        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+		        for (Role role : user.getRoles()) {
+		            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
+		        }
+		        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
+	        } else {
+	        	throw new UsernameNotFoundException("NAT FOUND");
 	        }
-	        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
-        } else {
-        	throw new UsernameNotFoundException("NAT FOUND");
-        }
         
         }
        

@@ -1,9 +1,7 @@
 package com.cloud9.onboard.model.db;
 
 import javax.persistence.*;
-
 import org.springframework.security.core.GrantedAuthority;
-
 import java.util.Set;
 
 @Entity

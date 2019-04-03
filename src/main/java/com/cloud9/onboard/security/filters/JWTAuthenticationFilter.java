@@ -46,19 +46,15 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
        
     }
     
-       
-    
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req,
                                                 HttpServletResponse res) throws AuthenticationException {
         try {
         	
-        	InputStream ist = req.getInputStream();
-        	  res.setHeader("Access-Control-Allow-Headers", "Authorization");
-              res.setHeader("Access-Control-Expose-Headers", "Authorization");
-              logger.debug("Attempting for Authentication......");
-        	
-        	
+			InputStream ist = req.getInputStream();
+			res.setHeader("Access-Control-Allow-Headers", "Authorization");
+			res.setHeader("Access-Control-Expose-Headers", "Authorization");
+			logger.debug("Attempting for Authentication......");
             ApplicationUser creds = new ObjectMapper()
                     .readValue(ist, ApplicationUser.class);
             return authenticationManager.authenticate(
@@ -99,7 +95,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .claim("roles", roles)
                 .claim("zoneid", loggedInUser.getZoneId())
                 .compact();
-       
         
         logger.debug("Appending token in the response.");
         res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);

@@ -1,6 +1,11 @@
 package com.cloud9.onboard.config;
 
 
+import static com.cloud9.onboard.constants.SecurityConstants.LOGIN_URL;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
@@ -8,19 +13,11 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
-import org.springframework.context.annotation.Bean;
-
-import static com.cloud9.onboard.constants.SecurityConstants.LOGIN_URL;
-import static com.cloud9.onboard.constants.SecurityConstants.SIGN_UP_URL;
 
 import com.cloud9.onboard.authentication.service.UserDetailsServiceImpl;
 import com.cloud9.onboard.security.filters.JWTAuthenticationFilter;
@@ -36,7 +33,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	  private CustomDBAuthenticationProvider authProvider;
 
 	  private UserDetailsServiceImpl userDetailsService;
-	    private BCryptPasswordEncoder bCryptPasswordEncoder;
+	  private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	    public WebSecurity(UserDetailsServiceImpl userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder) {
 	        this.userDetailsService = userDetailsService;

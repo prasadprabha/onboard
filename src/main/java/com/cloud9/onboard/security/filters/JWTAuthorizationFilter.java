@@ -43,6 +43,8 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         chain.doFilter(req, res);
     }
+    
+    
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
         String token = request.getHeader(HEADER_STRING);
         if (token != null) {
@@ -55,7 +57,6 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         	String zoneId = (null != claims.get("zoneid")) ? claims.get("zoneid").toString() : "";
             
             if (user != null) {
-            	//here adding zoneid instead of credentials.
                 return new UsernamePasswordAuthenticationToken(user, zoneId, new ArrayList<>());
             }
             return null;

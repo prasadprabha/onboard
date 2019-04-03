@@ -12,7 +12,6 @@ public class User {
     private String passwordConfirm;
     private Set<Role> roles;
     
-    
     public User() {
         super();
     }

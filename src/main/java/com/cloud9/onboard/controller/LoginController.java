@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cloud9.onboard.authentication.service.SecurityService;
 import com.cloud9.onboard.authentication.service.UserService;
 import com.cloud9.onboard.model.db.Role;
 import com.cloud9.onboard.model.db.User;
@@ -80,22 +79,22 @@ public class LoginController {
 	}
 	
 	
-	   @PostMapping("/sign-up")
-	    public void signUp(@RequestBody User user) {
-		   Role admin = new Role();
-		   admin.setName("Admin");
-		   admin.setId(1L);
-		   Set<Role> roles = new HashSet<Role>();
-		   roles.add(admin);
-		   user.setRoles(roles);
-		   userService.save(user);
-	    }
-	   
-	   
-		@RequestMapping(value = "/get-application-name", method = RequestMethod.GET)
-	    public String getApplicationName() {
-			
-	        return "Saved the user";
-	    }
+   @PostMapping("/sign-up")
+    public void signUp(@RequestBody User user) {
+	   Role admin = new Role();
+	   admin.setName("Admin");
+	   admin.setId(1L);
+	   Set<Role> roles = new HashSet<Role>();
+	   roles.add(admin);
+	   user.setRoles(roles);
+	   userService.save(user);
+    }
+   
+   
+	@RequestMapping(value = "/get-application-name", method = RequestMethod.GET)
+    public String getApplicationName() {
+		
+        return "Saved the user";
+    }
 
 }

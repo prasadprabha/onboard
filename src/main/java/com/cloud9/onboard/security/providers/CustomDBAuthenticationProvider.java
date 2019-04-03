@@ -1,9 +1,7 @@
 package com.cloud9.onboard.security.providers;
 
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +17,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cloud9.onboard.authentication.service.UserService;
-import com.cloud9.onboard.model.db.Role;
 import com.cloud9.onboard.pojo.ApplicationUser;
 
 
@@ -43,8 +40,6 @@ public class CustomDBAuthenticationProvider implements AuthenticationProvider {
 
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
-
-    //    String encodedPasswordFromUI = bCryptPasswordEncoder.encode(password);
 
         List<GrantedAuthority> roles = new ArrayList<>();
 
