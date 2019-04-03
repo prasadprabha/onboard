@@ -64,7 +64,7 @@ public class LoginController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/logout", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/auth/logout", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody ResponseEntity<LoginResponse> logout(HttpServletRequest request,HttpServletResponse response) throws Exception {
 		SecurityContextHolder.clearContext();
         HttpSession session= request.getSession(false);
