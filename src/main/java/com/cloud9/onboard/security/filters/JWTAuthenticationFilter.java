@@ -93,7 +93,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .claim("firstName", loggedInUser.getFirstName())
                 .claim("lastName", loggedInUser.getLastName())
                 .claim("roles", roles)
-                .claim("zoneid", loggedInUser.getZoneId())
                 .compact();
         
         logger.debug("Appending token in the response.");

@@ -31,21 +31,6 @@ public class ApplicationUser {
     @JsonInclude( JsonInclude.Include.NON_NULL)
     private String lastName;
     
-    @JsonProperty("zoneid")
-    @JsonInclude( JsonInclude.Include.NON_NULL)
-    private String zoneId;
-    
-  
-    public String getZoneId() {
-		return zoneId;
-	}
-
-
-	public void setZoneId(String zoneId) {
-		this.zoneId = zoneId;
-	}
-
-
 	public String getFirstName() {
 		return firstName;
 	}
