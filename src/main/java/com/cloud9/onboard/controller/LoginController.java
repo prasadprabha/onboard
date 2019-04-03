@@ -1,5 +1,7 @@
 package com.cloud9.onboard.controller;
 
+import static com.cloud9.onboard.constants.SecurityConstants.HEADER_STRING;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -15,7 +17,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,16 +31,12 @@ import com.cloud9.onboard.authentication.service.UserService;
 import com.cloud9.onboard.model.db.Role;
 import com.cloud9.onboard.model.db.User;
 import com.cloud9.onboard.response.LoginResponse;
-import static com.cloud9.onboard.constants.SecurityConstants.HEADER_STRING;
 
 @RestController
 public class LoginController {
 	
 	@Autowired
 	private UserService userService;
-
-	@Autowired
-	private SecurityService securityService;
 	
 	@GetMapping("/students/{studentId}/courses")
 	public List<String> retrieveCoursesForStudent(@PathVariable String studentId) {
