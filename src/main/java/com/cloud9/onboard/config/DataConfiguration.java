@@ -22,7 +22,7 @@ import com.cloud9.onboard.repository.data.CustomRepositoryImpl;
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.cloud9.onboard.repository.data"}, repositoryBaseClass = CustomRepositoryImpl.class)
 @EnableTransactionManagement
-@ComponentScan(basePackages = { "com.cloud9.onboard.model.db" })
+@ComponentScan(basePackages = { "com.cloud9.onboard.model.db","com.cloud9.onboard.camunda.service" })
 @EntityScan("com.cloud9.onboard.model.db")   
 @PropertySource("classpath:/application.yml")
 public class DataConfiguration {

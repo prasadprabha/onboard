@@ -31,3 +31,5 @@ insert into onboard.user (username,password) values ("jyothi@infosys.com","passw
 insert into onboard.user (username,password) values ("aswathy@infosys.com","password123");
 insert into onboard.user (username,password) values ("nima@infosys.com","password123");
 insert into onboard.user (username,password) values ("jojy@infosys.com","password123");
+
+insert into user_role (user_id,role_id) values (5,1);
