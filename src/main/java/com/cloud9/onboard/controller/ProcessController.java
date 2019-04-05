@@ -1,5 +1,7 @@
 package com.cloud9.onboard.controller;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cloud9.onboard.camunda.response.ProcessDefinitionResponse;
 import com.cloud9.onboard.camunda.service.ProcessService;
 import com.cloud9.onboard.pojo.FieldValue;
 import com.cloud9.onboard.pojo.FormField;
@@ -36,6 +39,17 @@ public class ProcessController {
 		}
 		
 		return formFieldArry;
+	}
+	
+	@RequestMapping(value = "/get-process-definitions", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Map<String,String> getProcessDefinitons() {
+		Map<String,String> processMap = new HashMap<String,String>();
+		List<ProcessDefinitionResponse>  processDefintions = processService.getProcessDefinitions();
+		for (ProcessDefinitionResponse response : processDefintions) {
+			processMap.put(response.getName(), response.getId());
+		}
+		
+		return processMap;
 	}
 
 }
