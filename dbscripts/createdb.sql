@@ -24,3 +24,10 @@ CREATE TABLE `onboard`.`user_role` (
   CONSTRAINT `fk_user_role_roleid` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_user_role_userid` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+insert into onboard.user (username,password) values ("prasad@infosys.com","password123");
+insert into onboard.user (username,password) values ("jyothi@infosys.com","password123");
+insert into onboard.user (username,password) values ("aswathy@infosys.com","password123");
+insert into onboard.user (username,password) values ("nima@infosys.com","password123");
+insert into onboard.user (username,password) values ("jojy@infosys.com","password123");
