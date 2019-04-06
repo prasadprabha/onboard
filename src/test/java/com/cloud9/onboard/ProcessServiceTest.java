@@ -15,7 +15,9 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import com.cloud9.onboard.camunda.request.StartProcessWithFormRequest;
 import com.cloud9.onboard.camunda.response.ProcessDefinitionResponse;
 import com.cloud9.onboard.camunda.response.StartProcessWithFormResponse;
+import com.cloud9.onboard.camunda.response.TaskResponse;
 import com.cloud9.onboard.camunda.service.ProcessService;
+import com.cloud9.onboard.camunda.service.TaskService;
 import com.cloud9.onboard.config.Config;
 import com.cloud9.onboard.pojo.FieldValue;
 
@@ -26,6 +28,9 @@ public class ProcessServiceTest {
 	
 	@Autowired
 	private ProcessService processService;
+	
+	@Autowired
+	private TaskService taskService;
 	
 	@Autowired
 	private Environment env;
@@ -94,6 +99,13 @@ public class ProcessServiceTest {
 	public void testStartGetProcessDefintions () {
 		List<ProcessDefinitionResponse>  processDefintions = processService.getProcessDefinitions();
 		System.out.println(processDefintions);
+	}
+	
+	
+	@Test
+	public void testGetTasksForGroup() {
+		List<TaskResponse> taskList = taskService.getTaskList("inductionteam");
+		System.out.println(taskList);
 	}
 
 }

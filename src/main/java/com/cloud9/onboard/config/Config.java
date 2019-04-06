@@ -13,8 +13,12 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.cloud9.onboard.camunda.dao.ProcessDao;
 import com.cloud9.onboard.camunda.dao.ProcessDaoRestImpl;
+import com.cloud9.onboard.camunda.dao.TaskDao;
+import com.cloud9.onboard.camunda.dao.TaskDaoRestImpl;
 import com.cloud9.onboard.camunda.service.ProcessService;
 import com.cloud9.onboard.camunda.service.ProcessServiceImpl;
+import com.cloud9.onboard.camunda.service.TaskService;
+import com.cloud9.onboard.camunda.service.TaskServiceImpl;
 
 
 @Configuration
@@ -54,6 +58,16 @@ public class Config {
     @Bean ProcessDao processDao(){
     	return new ProcessDaoRestImpl();
     }
+    
+    @Bean
+    public TaskService taskService(){
+    	return new TaskServiceImpl();
+    }
+    
+    @Bean TaskDao taskDao(){
+    	return new TaskDaoRestImpl();
+    }
+    
     
     
 }
