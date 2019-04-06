@@ -10,6 +10,7 @@ import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +22,7 @@ import com.cloud9.onboard.camunda.response.StartProcessWithFormResponse;
 import com.cloud9.onboard.camunda.service.ProcessService;
 import com.cloud9.onboard.pojo.FieldValue;
 import com.cloud9.onboard.pojo.FormField;
+import com.cloud9.onboard.pojo.FormValue;
 
 @RestController
 public class ProcessController {
@@ -59,21 +61,19 @@ public class ProcessController {
 		return formFieldArry;
 	}
 	
-	@RequestMapping(value = "/start-process-from", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE) 
-	public StartProcessWithFormResponse startProcess(Map<String,String> variables,String processDefinitionId) {
+	@RequestMapping(value = "/start-process-form", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE) 
+	public StartProcessWithFormResponse startProcess(@RequestBody List<FormValue> formValues) {
 		StartProcessWithFormRequest startProcessWithFormRequest = new StartProcessWithFormRequest();
 		Map<String, HashMap<String, String>> variableMap  = startProcessWithFormRequest.getVariables();
-		//String processDefinitionId = "";
-		
-		for (Map.Entry<String,String> entry : variables.entrySet()) {
-			HashMap<String,String> firstName = new HashMap<String,String>();
-			firstName.put("value", entry.getValue());
-			firstName.put("type", "String");
-			if(entry.getKey().equals("email")) {
-				startProcessWithFormRequest.setBusinessKey(entry.getValue());
-			}
-			variableMap.put(entry.getKey(), firstName);
-		}
+		String processDefinitionId = "";
+		/*
+		 * for (Map.Entry<String,String> entry : variables.entrySet()) {
+		 * HashMap<String,String> firstName = new HashMap<String,String>();
+		 * firstName.put("value", entry.getValue()); firstName.put("type", "String");
+		 * if(entry.getKey().equals("email")) {
+		 * startProcessWithFormRequest.setBusinessKey(entry.getValue()); }
+		 * variableMap.put(entry.getKey(), firstName); }
+		 */
 		StartProcessWithFormResponse response = processService.startProcessWithForm(startProcessWithFormRequest, processDefinitionId);
 		return response;
 	}
