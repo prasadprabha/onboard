@@ -35,45 +35,45 @@ public class ProcessServiceTest {
 	public void testStartProcessWithForm() {
 		StartProcessWithFormRequest startProcessWithFormRequest = new StartProcessWithFormRequest();
 		startProcessWithFormRequest.setBusinessKey("prasad.suseela@infosys.com");
-		Map<String, HashMap<String, String>> variableMap  = startProcessWithFormRequest.getVariables();
+		Map<String, HashMap<String, Object>> variableMap  = startProcessWithFormRequest.getVariables();
 		
-		HashMap<String,String> firstName = new HashMap<String,String>();
+		HashMap<String,Object> firstName = new HashMap<String,Object>();
 		firstName.put("value", "Prasad");
 		firstName.put("type", "String");
 		variableMap.put("firstName", firstName);
 		
-		HashMap<String,String> lastName = new HashMap<String,String>();
+		HashMap<String,Object> lastName = new HashMap<String,Object>();
 		lastName.put("value", "Prasad");
 		lastName.put("type", "String");
 		variableMap.put("lastName", lastName);
 		
-		HashMap<String,String> sowrole = new HashMap<String,String>();
+		HashMap<String,Object> sowrole = new HashMap<String,Object>();
 		sowrole.put("value", "ProgramLead");
 		sowrole.put("type", "String");
 		variableMap.put("amount", sowrole);
 		
-		HashMap<String,String> middleName = new HashMap<String,String>();
+		HashMap<String,Object> middleName = new HashMap<String,Object>();
 		middleName.put("value", "ProgramLead");
 		middleName.put("type", "String");
 		variableMap.put("middleName", middleName);
 		
-		HashMap<String,String> sow = new HashMap<String,String>();
+		HashMap<String,Object> sow = new HashMap<String,Object>();
 		sow.put("value", "ProgramLead");
 		sow.put("type", "String");
 		variableMap.put("sow", sow);
 		
-		HashMap<String,String> doj = new HashMap<String,String>();
+		HashMap<String,Object> doj = new HashMap<String,Object>();
 		sow.put("value", "1212121");
 		sow.put("type", "String");
 		variableMap.put("doj", doj);
 		
-		HashMap<String,String> email = new HashMap<String,String>();
+		HashMap<String,Object> email = new HashMap<String,Object>();
 		sow.put("value", "prasad.suseela@infosys.com");
 		sow.put("type", "String");
 		variableMap.put("email", email);
 		
 		
-		HashMap<String,String> offshore = new HashMap<String,String>();
+		HashMap<String,Object> offshore = new HashMap<String,Object>();
 		offshore.put("value", "true");
 		offshore.put("type", "Boolean");
 		variableMap.put("offshore", offshore);

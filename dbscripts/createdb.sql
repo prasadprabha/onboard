@@ -14,7 +14,7 @@ CREATE TABLE onboard.`role` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-INSERT INTO role VALUES (1,'ROLE_USER');
+INSERT INTO role VALUES (1,'admin');
 
 CREATE TABLE `onboard`.`user_role` (
   `user_id` int(11) NOT NULL,
@@ -26,10 +26,21 @@ CREATE TABLE `onboard`.`user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-insert into onboard.user (username,password) values ("prasad@infosys.com","password123");
-insert into onboard.user (username,password) values ("jyothi@infosys.com","password123");
-insert into onboard.user (username,password) values ("aswathy@infosys.com","password123");
-insert into onboard.user (username,password) values ("nima@infosys.com","password123");
-insert into onboard.user (username,password) values ("jojy@infosys.com","password123");
+insert into onboard.user (id,username,password) values (5,"prasad@infosys.com","password123");
+insert into onboard.user (id,username,password) values (6,"jyothi@infosys.com","password123");
+insert into onboard.user (id,username,password) values (7,"aswathy@infosys.com","password123");
+insert into onboard.user (id,username,password) values (8,"nima@infosys.com","password123");
+insert into onboard.user (id,username,password) values (9,"jojy@infosys.com","password123");
 
-insert into user_role (user_id,role_id) values (5,1);
+
+insert into role (id,name) values (6,"onboardingteam");
+insert into user_role (user_id,role_id) values (6,6);
+
+insert into role (id,name) values (7,"cryptocardallocationteam");
+insert into user_role (user_id,role_id) values (7,7);
+
+insert into role (id,name) values (8,"bgcheck");
+insert into user_role (user_id,role_id) values (8,8);
+
+insert into role (id,name) values (9,"admin");
+insert into user_role (user_id,role_id) values (9,1);

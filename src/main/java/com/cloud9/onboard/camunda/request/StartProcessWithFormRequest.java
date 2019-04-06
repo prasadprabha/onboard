@@ -4,13 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StartProcessWithFormRequest {
-	Map<String, HashMap<String, String>> variables = new HashMap<String,HashMap<String,String>>();
+	
+	Map<String, HashMap<String, Object>> variables = new HashMap<String,HashMap<String,Object>>();
 	String businessKey = "";
 	
-	public Map<String, HashMap<String, String>> getVariables() {
+	public Map<String, HashMap<String, Object>> getVariables() {
 		return variables;
 	}
-	public void setVariables(Map<String, HashMap<String, String>> variables) {
+	public void setVariables(Map<String, HashMap<String, Object>> variables) {
 		this.variables = variables;
 	}
 	public String getBusinessKey() {
