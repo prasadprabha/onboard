@@ -62,18 +62,37 @@ public class ProcessController {
 	}
 	
 	@RequestMapping(value = "/start-process-form", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE) 
-	public StartProcessWithFormResponse startProcess(@RequestBody List<FormValue> formValues) {
+	public StartProcessWithFormResponse startProcess(@RequestBody Map<String,String> variables) {
 		StartProcessWithFormRequest startProcessWithFormRequest = new StartProcessWithFormRequest();
-		Map<String, HashMap<String, String>> variableMap  = startProcessWithFormRequest.getVariables();
+		Map<String, HashMap<String, Object>> variableMap  = startProcessWithFormRequest.getVariables();
 		String processDefinitionId = "";
-		/*
-		 * for (Map.Entry<String,String> entry : variables.entrySet()) {
-		 * HashMap<String,String> firstName = new HashMap<String,String>();
-		 * firstName.put("value", entry.getValue()); firstName.put("type", "String");
-		 * if(entry.getKey().equals("email")) {
-		 * startProcessWithFormRequest.setBusinessKey(entry.getValue()); }
-		 * variableMap.put(entry.getKey(), firstName); }
-		 */
+		
+		
+		  for (Map.Entry<String,String> entry : variables.entrySet()) {
+			  if(entry.getKey().equals("processDefinitionId")) {
+				  processDefinitionId = entry.getValue();
+			  } else {
+			  HashMap<String,Object> firstName = new HashMap<String,Object>();
+			  
+			  firstName.put("value", entry.getValue().toString()); 
+			  
+			  if(entry.getKey().equals("offshore")) {
+				  firstName.put("type", "Boolean");
+			  } 
+			   else {
+				  firstName.put("type", "String");
+			  }
+			 
+			  if(entry.getKey().equals("email")) {
+				  startProcessWithFormRequest.setBusinessKey(entry.getValue()); 
+			  }
+			  
+			  
+			  variableMap.put(entry.getKey().toString(), firstName); 
+			  }
+		  
+		  }
+		 
 		StartProcessWithFormResponse response = processService.startProcessWithForm(startProcessWithFormRequest, processDefinitionId);
 		return response;
 	}
